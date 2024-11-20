@@ -1,0 +1,216 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "mi-primera-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/mi-primera-app",
+      "sourceRoot": "projects/mi-primera-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mi-primera-app",
+            "index": "projects/mi-primera-app/src/index.html",
+            "browser": "projects/mi-primera-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mi-primera-app/tsconfig.app.json",
+            "assets": [
+              "projects/mi-primera-app/src/favicon.ico",
+              "projects/mi-primera-app/src/assets"
+            ],
+            "styles": [
+              "projects/mi-primera-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "mi-primera-app:build:production"
+            },
+            "development": {
+              "buildTarget": "mi-primera-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "mi-primera-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mi-primera-app/tsconfig.spec.json",
+            "assets": [
+              "projects/mi-primera-app/src/favicon.ico",
+              "projects/mi-primera-app/src/assets"
+            ],
+            "styles": [
+              "projects/mi-primera-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "mi-segunda-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/mi-segunda-app",
+      "sourceRoot": "projects/mi-segunda-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/mi-segunda-app",
+            "index": "projects/mi-segunda-app/src/index.html",
+            "browser": "projects/mi-segunda-app/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/mi-segunda-app/tsconfig.app.json",
+            "assets": [
+              "projects/mi-segunda-app/src/favicon.ico",
+              "projects/mi-segunda-app/src/assets"
+            ],
+            "styles": [
+              "projects/mi-segunda-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "mi-segunda-app:build:production"
+            },
+            "development": {
+              "buildTarget": "mi-segunda-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "mi-segunda-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/mi-segunda-app/tsconfig.spec.json",
+            "assets": [
+              "projects/mi-segunda-app/src/favicon.ico",
+              "projects/mi-segunda-app/src/assets"
+            ],
+            "styles": [
+              "projects/mi-segunda-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "mi-lib": {
+      "projectType": "library",
+      "root": "projects/mi-lib",
+      "sourceRoot": "projects/mi-lib/src",
+      "prefix": "ng-mi-lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/mi-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/mi-lib/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/mi-lib/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/mi-lib/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
